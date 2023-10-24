@@ -1,0 +1,17 @@
+class Solution:
+    def largestNumber(self, nums):
+        # Custom sorting function to compare two numbers as strings
+        def compare(x, y):
+            return int(x + y) - int(y + x)
+
+        # Convert each numbers in nums to strings
+        str_nums = [str(num) for num in nums]
+
+        # Sort the strings using the custom comparison function
+        str_nums.sort(key=cmp_to_key(compare), reverse=True)
+        res = ''.join(str_nums) # Concatenate the sorted strings
+        res = res.lstrip('0') # Remove leading zeros
+
+        # If the result is an empty string, return '0'
+        return res if res else '0' 
+        
