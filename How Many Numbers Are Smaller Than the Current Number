@@ -1,0 +1,10 @@
+class Solution(object):
+    def smallerNumbersThanCurrent(self, nums):
+        newArr=[]
+        for j in range(len(nums)):
+            count=0
+            for i in range(len(nums)):
+                if nums[i]<nums[j]:
+                    count+=1
+            newArr.append(count)
+        return newArr
