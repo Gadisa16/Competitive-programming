@@ -1,0 +1,15 @@
+class Solution(object):
+    def frequencySort(self, s):
+        output=""
+        dict={}
+        for char in s: #making dictionary from character and characters frequency pair
+            if char in dict:
+                dict[char]+=1
+            else:
+                dict[char]=1
+        
+        sorted_dict=sorted(dict, key=dict.get, reverse=True) #sorting dict based on value
+        for char in sorted_dict: #storing in output
+            output+= char*dict[char]
+        
+        return output
