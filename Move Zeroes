@@ -1,0 +1,10 @@
+class Solution(object):
+    def moveZeroes(self, nums):
+        zeros_indx = 0  # records the position of "0"
+        for i in range(len(nums)):
+            if nums[i] != 0:
+                nums[i], nums[zeros_indx] = nums[zeros_indx], nums[i]
+                zeros_indx += 1
+
+        
+        
