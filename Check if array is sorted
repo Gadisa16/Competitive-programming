@@ -1,0 +1,6 @@
+class Solution:
+    def arraySortedOrNot(self, arr, n):
+        for i in range(n-1):
+            if arr[i+1] < arr[i]:
+                return 0
+        return 1
