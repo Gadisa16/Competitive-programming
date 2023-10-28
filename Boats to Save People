@@ -1,0 +1,17 @@
+class Solution(object):
+    def numRescueBoats(self, people, limit):
+        nb = 0
+        people.sort()  # Sort the people list in ascending order
+        left, right = 0, len(people) - 1         
+
+        while left <= right:
+            if people[left] + people[right] <= limit:
+                #load lightest and heiviest person, if their Weight<=limit 
+                left += 1
+                right -= 1
+            else:
+                #If they can't fit together,load the heaviest person in a boat
+                right -= 1
+            nb += 1
+
+        return nb
