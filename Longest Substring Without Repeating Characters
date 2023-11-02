@@ -1,0 +1,18 @@
+class Solution:
+    def lengthOfLongestSubstring(self, s):
+        prev = [-3] * 128
+        l = 0
+        max_len=0
+        for r, char in enumerate(s):
+            if prev[ord(char)] >= l:
+                l = prev[ord(char)] + 1
+            prev[ord(char)] = r
+            max_len = max(max_len, r - l + 1)
+            
+        return max_len
+
+"""
+prev = [-3] * 128 # -3, intiialize array elts to any -ve value, since all ASCI values are non-negative
+
+128-(to account for all possible ASCII characters)
+"""
