@@ -1,0 +1,26 @@
+from collections import Counter
+
+class Solution:
+    def findAnagrams(self, string, anagram):
+        anagram_counts = Counter(anagram)
+        window_counts = Counter()
+
+        start_indices = []
+        window_start = 0
+
+        for end_idx, char in enumerate(string):
+            window_counts[char] += 1
+
+            if end_idx >= len(anagram) - 1:
+                if window_counts == anagram_counts:
+                    start_indices.append(window_start)
+
+                # Remove the leftmost character from the window
+                left_char = string[window_start]
+                window_counts[left_char] -= 1
+                if window_counts[left_char] == 0:
+                    del window_counts[left_char]
+
+                window_start += 1
+
+        return start_indices
