@@ -1,0 +1,22 @@
+class Solution:
+    def characterReplacement(self, s, k):
+        count={}
+        window=0
+        l=0
+        for r, char in enumerate(s):
+            count[s[r]]= 1 + count.get(char, 0) #count of value s[r]
+
+            if window +1 - max(count.values())<=k:
+                window+=1
+            
+            else:
+                count[s[l]]-=1
+                l+=1
+        return window
+                
+
+"""
+#max(count.values()) to get most frequent value from dictionary count,so window - max(count.values()) is value with small frequency in that window 
+#count[s[l]]-=1 #decreasing the frequency of left most  charatcer  
+# Maintain a dictionary that keeps track of last 'window' characters
+"""
