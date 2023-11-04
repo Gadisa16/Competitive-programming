@@ -1,0 +1,11 @@
+class Solution:
+    def subarraySum(self, nums, k):
+        hashMap = {0 : 1}
+        n = len(nums)
+        s = 0
+        subarrayCount = 0
+        for i in range(n):
+            s += nums[i]
+            subarrayCount += hashMap.get(s-k, 0)
+            hashMap[s] = hashMap.get(s, 0) + 1
+        return subarrayCount
