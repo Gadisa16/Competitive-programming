@@ -1,0 +1,27 @@
+from collections import defaultdict
+class Solution(object):
+    def groupAnagrams(self, strs):
+        anagram_map=defaultdict(list)
+        anagram_list=[]
+
+        for word in strs:
+            sorted_tuple=tuple(sorted(word))
+            anagram_map[sorted_tuple].append(word)
+
+        for val in anagram_map.values():
+            anagram_list.append(val)
+        return anagram_list
+
+"""
+line 4 and 5: creating empty dictionay and empty list
+line 7-9: sorting each words in strs by their character like 
+('a', 'e', 't')
+('a', 'e', 't')
+('a', 'n', 't') ... and
+forming dictionaries that have tuple as key and list of anagram words as values.
+we use tuple as key coz tuple is immutable. 
+dictionaries store unique key values so when it encounters same key as before like tuple of (eat and tea) it 
+stores both of them in the same place coz their sorted_tuple value is same.
+"""
+        
+        
