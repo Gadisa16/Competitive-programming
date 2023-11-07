@@ -1,0 +1,20 @@
+class Solution:
+    def totalFruit(self, fruits):
+        types = {}
+        back = 0
+        res = 0
+
+        for front in range(len(fruits)):
+            types[fruits[front]] = 1 + types.get(fruits[front], 0)
+
+            # release
+            while len(types) >=3:
+                types[fruits[back]] = types.get(fruits[back]) - 1
+                if types[fruits[back]] == 0:
+                    del types[fruits[back]]
+                back += 1
+
+            res = max(res, front - back + 1)
+        return (res)
+
+# find the longest subarray that has at most 2 different numbers
