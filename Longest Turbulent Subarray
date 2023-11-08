@@ -1,23 +1,31 @@
 class Solution:
     def maxTurbulenceSize(self, A):
-        maxlength=1
-        curlength=1
-        flip= False
-        for i in range(len(A)-1):
-            if A[i]==A[i+1]:
-                curlength=1
+        maxlen=1 
+        curlen=1 
+        prevOper= "" 
+        for i in range(1, len(A)):
+            if A[i-1]==A[i]:
+                curlen=1 
                 continue
-            if A[i]>A[i+1]:
-                if flip:
-                    curlength=2
+            elif A[i-1]>A[i]:
+                if prevOper=="<":
+                    curlen +=1
                 else:
-                    curlength+=1
-                flip=True
-            if A[i]<A[i+1]:
-                if flip:
-                    curlength+=1
+                    curlen=2
+                prevOper=">"
+            elif A[i-1]<A[i]:
+                if prevOper==">":
+                    curlen +=1
                 else:
-                    curlength=2
-                flip=False
-            maxlength=max(maxlength,curlength)
-        return maxlength
+                    curlen=2
+                prevOper="<"
+            maxlen=max(maxlen,curlen)
+        return maxlen
+
+"""
+remark: we are finding for length of longest subarray with comparison operator flipped for every adjacent pair
+
+maxlen=1 # 1 is minimum possible value
+curlen=1 # 1 is minimum possible length
+prevOper= "" #previous operator (nothing is compared at beginning).
+"""
