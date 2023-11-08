@@ -1,0 +1,23 @@
+class Solution:
+    def maxTurbulenceSize(self, A):
+        maxlength=1
+        curlength=1
+        flip= False
+        for i in range(len(A)-1):
+            if A[i]==A[i+1]:
+                curlength=1
+                continue
+            if A[i]>A[i+1]:
+                if flip:
+                    curlength=2
+                else:
+                    curlength+=1
+                flip=True
+            if A[i]<A[i+1]:
+                if flip:
+                    curlength+=1
+                else:
+                    curlength=2
+                flip=False
+            maxlength=max(maxlength,curlength)
+        return maxlength
