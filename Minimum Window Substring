@@ -1,0 +1,38 @@
+from collections import Counter
+class Solution:
+    def minWindow(self, s, t):
+            if len(t) > len(s):
+                return ""
+            minLength = len(s) + 1
+            count_t = Counter(t)
+            distincts = len(count_t) #Number of distinct characters in "t"
+
+            l,r = 0,0 #Pointers for the sliding window
+            
+            # Keep the starting and ending index of the smallest window
+            minI = -1
+            minJ = -1
+            
+            
+            while r < len(s):
+                if s[r] in count_t:
+                    count_t[s[r]] -= 1
+                    if count_t[s[r]] == 0: 
+                        distincts -= 1
+                
+                while distincts == 0:
+                    if r - l + 1 < minLength:
+                        minLength = r - l + 1
+                        minI = l
+                        minJ = r
+                    if s[l] in count_t: 
+                        count_t[s[l]] += 1
+                        if count_t[s[l]] == 1: 
+                            distincts += 1
+                    
+                    l += 1
+                r += 1
+            
+            substring = s[minI:minJ + 1]           
+            return substring
+
