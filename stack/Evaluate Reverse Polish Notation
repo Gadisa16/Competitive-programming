@@ -1,0 +1,24 @@
+class Solution(object):
+    def evalRPN(self, tokens):
+        stack = []
+
+        for elem in tokens:
+            if elem not in "+-*/":
+                stack.append(elem)
+            else:
+                op1 = int(stack.pop())
+                op2 = int(stack.pop())
+
+                if elem == '+':
+                    stack.append(op1 + op2)
+
+                elif elem == '-':
+                    stack.append(op2 - op1)
+
+                elif elem == '*':
+                    stack.append(op1 * op2)
+
+                elif elem == '/':
+                    stack.append(int(op2/float(op1)))
+
+        return int(stack[0])
