@@ -1,0 +1,19 @@
+class Solution(object):
+    def scoreOfParentheses(self, s):
+        stack = []
+        val = 0
+    
+        for i in s:
+            if i == "(":
+                stack.append(val)
+                val = 0
+            else:
+                popd = stack.pop()
+                val = popd + max(2 * val, 1)
+        
+        return val
+
+"""
+popd = stack.pop() :When a closing parenthesis is encountered, pop the last result from the stack
+
+"""
