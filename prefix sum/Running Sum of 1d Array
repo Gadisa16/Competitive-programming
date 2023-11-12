@@ -1,0 +1,8 @@
+class Solution(object):
+    def runningSum(self, nums):
+        cumul_sum=[0]*len(nums) #cumulative sum
+        
+        for i in range(len(nums)):
+            cumul_sum[i]= cumul_sum[i-1]+ nums[i]
+        
+        return cumul_sum
