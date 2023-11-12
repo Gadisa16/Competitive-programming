@@ -1,0 +1,17 @@
+class Solution(object):
+    def subarraysDivByK(self, nums, k):
+        dic={0:1}
+        subarrays=0
+        summ=0
+        for i in range(len(nums)):
+            summ+=nums[i]
+            rem = summ % k
+
+            if rem not in dic:
+                dic[rem] =1
+            
+            elif rem in dic:
+                subarrays +=dic[rem]
+                dic[rem] += 1
+
+        return subarrays
