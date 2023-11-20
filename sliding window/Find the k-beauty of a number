@@ -1,0 +1,10 @@
+class Solution(object):
+    def divisorSubstrings(self, num, k):
+        count =0
+        sNum= str(num)
+
+        for i in range(len(sNum)):
+            if int(sNum[i:i+k])!= 0 and len(sNum[i:i+k])==k and int(sNum) % int(sNum[i:i+k])==0:
+                count +=1
+        
+        return count
