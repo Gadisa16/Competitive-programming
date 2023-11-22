@@ -1,0 +1,21 @@
+class Solution(object):
+    def calPoints(self, operations):
+        arr= []
+       
+        for val in operations:
+    
+            if val== "+":
+                ad = arr[-1] +arr[-2]
+                arr.append(ad)
+            
+            elif val== "C":
+                arr.pop()
+
+            elif val== "D":
+                doub = arr[-1] *2
+                arr.append(doub)
+            
+            else:
+                arr.append(int(val))
+                
+        return sum(arr)
