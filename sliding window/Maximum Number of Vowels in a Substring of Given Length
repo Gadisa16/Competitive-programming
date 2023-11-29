@@ -1,0 +1,20 @@
+class Solution:
+	def maxVowels(self, s, k):
+        
+            vowels="aeiou"
+            l, cv= 0, 0
+            for i in range(k):
+                if s[i] in vowels:
+                    cv +=1
+            maxv =cv
+
+            for r in range(k, len(s)):
+                if s[l] in vowels: #character w/c we are leaving
+                    cv -=1
+                if s[r] in vowels: #character w/c we are going to include
+                    cv +=1
+                    
+                maxv = max(cv, maxv)        
+                l+=1
+
+            return maxv
