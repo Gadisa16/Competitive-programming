@@ -1,0 +1,13 @@
+class Solution(object):
+    def minimumRecolors(self, blocks, k):
+
+        minb = 100 #from constraints
+        l, r= 0, k-1
+        while r<len(blocks):
+            window =blocks[l:r+1]
+            currb = window.count("W")
+            minb = min(minb, currb)
+            l+=1
+            r+=1
+
+        return minb
