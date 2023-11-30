@@ -1,0 +1,12 @@
+class Solution(object):
+    def arithmeticTriplets(self, nums, diff):
+
+        i,j =0,1 
+        count =0
+        for i in range(len(nums)-2):
+            for j in range(i+1, len(nums)-1):
+                if nums[j] - nums[i]==diff:
+                    if (2*nums[j] - nums[i]) in nums[j+1:]:
+                        count +=1
+                   
+        return count
