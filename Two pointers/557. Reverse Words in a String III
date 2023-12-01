@@ -1,0 +1,12 @@
+class Solution(object):
+    def reverseWords(self, s):
+        revS = ""
+        i = 0
+        for j in range(len(s)):
+            if s[j] == " ":
+                #Reverse the word and add space
+                revS += s[i:j][::-1] + " "
+                i = j + 1
+            elif j == len(s) - 1:
+                revS += s[i:][::-1] #Reverse the last word
+        return revS
