@@ -1,0 +1,17 @@
+class Solution(object):
+    def flipAndInvertImage(self, image):
+        #flipping horizontally
+        for lis in image:
+            l, r=0, len(lis)-1
+            while l<r:
+                lis[l], lis[r] = lis[r], lis[l]
+                l+=1
+                r-=1
+        #inverting
+        for lis in image:
+            for i in range(len(lis)):
+                if lis[i]==0:
+                    lis[i]=1
+                else:
+                    lis[i]=0
+        return image
