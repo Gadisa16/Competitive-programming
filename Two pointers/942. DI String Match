@@ -1,0 +1,23 @@
+class Solution:
+    def diStringMatch(self, s: str) -> List[int]:
+        pi, pd=0, len(s)
+        arr=[]
+
+        for i in range(len(s)):
+            if s[i]=="I":
+                arr.append(pi)
+                pi +=1
+                
+                if i==len(s)-1:
+                    arr.append(pi)
+    
+            else:
+                arr.append(pd)
+                pd -=1
+
+                if i==len(s)-1:
+                    arr.append(pd)
+        
+        return arr
+
+        
