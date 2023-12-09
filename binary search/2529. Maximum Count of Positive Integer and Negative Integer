@@ -1,0 +1,7 @@
+from bisect import bisect_left, bisect_right
+class Solution:
+    def maximumCount(self, nums: List[int]) -> int:
+        left_z= bisect_left(nums, 0)
+        right_z= bisect_right(nums, 0)
+
+        return max(left_z, len(nums)-right_z)
