@@ -1,0 +1,9 @@
+class Solution(object):
+    def minimumSum(self, num):
+        lis= list(str(num))
+        lis.sort()
+        
+        new1= str(lis[0])+ str(lis[2])
+        new2= str(lis[1])+ str(str(lis[3]))
+
+        return int(new1)+ int(new2)
