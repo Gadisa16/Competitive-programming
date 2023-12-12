@@ -1,0 +1,10 @@
+class Solution(object):
+    def findNonMinOrMax(self, nums):
+        nums.sort()
+        ans= -1
+        
+        if len(nums) >2:
+            ans= nums[1]
+                
+        return ans
+        
