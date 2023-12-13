@@ -1,0 +1,10 @@
+class Solution(object):
+    def minMovesToSeat(self, seats, students):
+        seats.sort()
+        students.sort()
+        shift_num = 0
+        
+        for i in range(len(seats)):
+            shift_num += abs(students[i] -seats[i])
+        
+        return shift_num
