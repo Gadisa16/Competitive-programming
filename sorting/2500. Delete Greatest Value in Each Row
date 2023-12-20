@@ -1,0 +1,12 @@
+class Solution(object):
+    def deleteGreatestValue(self, grid):
+        summ, eachRow_len= 0, len(grid[0])
+        while eachRow_len> 0:
+            maxincol= 0
+            for i in range(len(grid)):
+                cur_m= max(grid[i])
+                maxincol= max(cur_m, maxincol )
+                grid[i].remove(cur_m)
+            summ+= maxincol
+            eachRow_len -=1
+        return summ
