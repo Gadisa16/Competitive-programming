@@ -1,0 +1,10 @@
+class Solution(object):
+    def arrayPairSum(self, nums):
+        nums.sort()
+        summ, i= 0, 0
+        
+        while i< len(nums):
+            summ +=nums[i]
+            i+=2
+        
+        return summ
