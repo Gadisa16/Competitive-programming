@@ -1,0 +1,3 @@
+class Solution(object):
+    def sortByBits(self, arr):  
+        return sorted(arr, key= lambda val: (bin(val).count("1"), val) )
