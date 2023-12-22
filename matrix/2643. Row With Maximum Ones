@@ -1,0 +1,12 @@
+class Solution(object):
+    def rowAndMaximumOnes(self, mat):
+        arr=[]
+        maxCount= -1
+        
+        for row in mat:
+            curCount= row.count(1)
+            if curCount >maxCount:
+                ind= mat.index(row)
+                maxCount= curCount
+                
+        return arr +[ind, maxCount] #concatenating lists
