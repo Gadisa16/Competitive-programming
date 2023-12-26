@@ -1,0 +1,14 @@
+class Solution:
+    def countKDifference(self, nums: List[int], k: int) -> int:
+        dic= defaultdict(int)
+        count=0
+        #|val1-val2|==k
+        for val2 in nums:
+            if val2-k in dic:
+                count +=dic[val2-k]
+            if val2+k in dic:
+                count +=dic[val2+k]
+
+            dic[val2]+=1
+        
+        return count
