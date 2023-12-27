@@ -1,0 +1,12 @@
+class Solution:
+    def minCost(self, colors: str, neededTime: List[int]) -> int:
+        
+        mintime, curmax=0, 0
+        for i in range(len(colors)):
+            if i>=1 and colors[i-1]!= colors[i]:
+                curmax=0
+            
+            mintime += min(curmax, neededTime[i])
+            curmax =max(curmax, neededTime[i])
+
+        return mintime
