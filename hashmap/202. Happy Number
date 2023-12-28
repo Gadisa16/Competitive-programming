@@ -1,0 +1,17 @@
+from collections import defaultdict
+class Solution:
+    def isHappy(self, n: int) -> bool:
+        j, dic=0, defaultdict(int)
+        while n!=1:
+            if n not in dic:
+                dic[n]= j
+                j+=1
+            else:
+                return False
+
+            s, ans= str(n), 0
+            for val in s:
+                ans+= int(val)*int(val)
+            n= ans
+             
+        return True
