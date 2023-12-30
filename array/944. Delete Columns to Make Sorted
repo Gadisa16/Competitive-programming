@@ -1,0 +1,11 @@
+class Solution:
+    def minDeletionSize(self, strs: List[str]) -> int:
+        count= 0
+        counted_c= set()
+        for i in range(1, len(strs)):
+            for j in range(len(strs[0])):
+                if strs[i][j]< strs[i-1][j]:
+                    if j not in counted_c:
+                        count +=1
+                        counted_c.add(j)
+        return count
