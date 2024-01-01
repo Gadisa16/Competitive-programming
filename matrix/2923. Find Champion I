@@ -1,0 +1,10 @@
+class Solution(object):
+    def findChampion(self, grid):
+        champ =0
+        for ind, row in enumerate(grid):
+            cur= row.count(1)
+            if cur>champ:
+                champ= cur
+                maxi= ind
+
+        return maxi
