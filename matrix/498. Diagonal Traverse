@@ -1,0 +1,34 @@
+class Solution:
+    def findDiagonalOrder(self, mat: List[List[int]]) -> List[int]:
+        r, c, arr = 0, 0, []
+        lr, lc, direc= len(mat), len(mat[0]), 1 #1 is for up and -1 is for down
+
+        for _ in range(lr*lc):
+            arr.append(mat[r][c])
+
+            if direc == 1:
+                if c == lc-1:
+                    r += 1
+                    direc = -1
+
+                elif r == 0:
+                    c += 1
+                    direc = -1
+
+                else:
+                    r -= 1
+                    c += 1
+
+            elif direc == -1:
+                if r == lr-1:
+                    c += 1
+                    direc = 1
+
+                elif c == 0:
+                    r += 1
+                    direc = 1
+
+                else:
+                    r += 1
+                    c -= 1
+        return arr
