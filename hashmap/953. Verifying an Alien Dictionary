@@ -19,3 +19,6 @@ class Solution:
                         break
 
         return True
+"""
+first return all counter-condition or condition wich are false (think about counter example in math)
+"""
