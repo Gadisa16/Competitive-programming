@@ -1,0 +1,12 @@
+class Solution(object):
+    def minLength(self, s):
+        if "AB" in s:
+            s = s.replace("AB", "", 1)
+        
+        if "CD" in s:
+            s = s.replace("CD", "", 1)
+        
+        if "AB" not in s and "CD" not in s:
+            return len(s)
+        else:
+            return self.minLength(s)
