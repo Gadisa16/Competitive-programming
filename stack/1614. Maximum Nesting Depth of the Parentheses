@@ -1,0 +1,30 @@
+#time: O(n) and space: O(n)
+class Solution:
+    def maxDepth(self, s: str) -> int:
+        stack, maxn= [], 0
+
+        for val in s:
+            if val== "(":
+                stack.append(val)
+            
+            if val== ")":
+                maxn= max(len(stack), maxn)
+                stack.pop()
+        
+        return maxn
+
+#time: O(n) and space: O(1)
+
+class Solution(object):
+    def maxDepth(self, s):
+        count, maxn= 0, 0
+
+        for val in s:
+            if val== "(":
+                count +=1
+            
+            if val== ")":
+                maxn= max(count, maxn)
+                count -=1
+
+        return maxn
