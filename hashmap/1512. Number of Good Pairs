@@ -3,9 +3,7 @@ class Solution:
         dic, ans= Counter(nums), 0
 
         for val in dic:
-            if dic[val] ==2:
-                ans +=1
-            if dic[val] >2:
+            if dic[val] >=2:
                 ans += (dic[val]**2 -dic[val])//2
         
         return ans
