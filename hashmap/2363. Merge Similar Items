@@ -1,0 +1,16 @@
+class Solution:
+    def mergeArrays(self, nums1: List[List[int]], nums2: List[List[int]]) -> List[List[int]]:
+        dic={}
+        for row in nums1:
+            k, v= row
+            dic[k]= v
+        
+        for row in nums2:
+            k, v= row
+            if k in dic:
+                dic[k] += v
+            else:
+                dic[k] =v
+        
+        merged= [[k, v] for k, v in dic.items()]
+        return sorted(merged, key= lambda row: row[0])
