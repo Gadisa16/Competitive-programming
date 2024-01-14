@@ -1,0 +1,17 @@
+class Solution(object):
+    def decrypt(self, code, k):
+        n= len(code)
+        if k==0:
+            return [0]*n
+        
+        code, ans=code*3, []
+        
+        if k>0:
+            for i in range(n, 2*n):
+                ans.append(sum(code[i+1:i+k+1]))
+            return ans
+        
+        if k<0:
+            for i in range(n, 2*n):
+                ans.append(sum(code[i+k: i]))
+            return ans
