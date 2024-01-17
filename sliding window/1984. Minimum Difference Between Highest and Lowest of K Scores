@@ -1,0 +1,9 @@
+class Solution(object):
+    def minimumDifference(self, nums, k):
+        nums.sort()
+        ans= 100000
+    
+        for l in range(len(nums)-k+1):
+            ans= min(ans, nums[l+k-1]- nums[l])
+        
+        return ans
