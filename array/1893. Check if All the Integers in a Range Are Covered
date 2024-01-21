@@ -1,0 +1,15 @@
+class Solution:
+    def isCovered(self, ranges: List[List[int]], left: int, right: int) -> bool:
+        lr=[]
+        for val in range(left, right+1):
+            lr.append(val)
+
+        for num in lr:
+            ans = False
+            for row in ranges:
+                if row[0]<= num <=row[1]:
+                    ans= True
+                    break
+            if ans== False:
+                return False
+        return ans
