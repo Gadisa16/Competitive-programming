@@ -1,0 +1,8 @@
+class Solution:
+    def minStartValue(self, nums: List[int]) -> int:
+        minval, ps = 10000, 0
+        for val in nums:
+            ps += val
+            minval= min(ps, minval)
+        
+        return 1 if minval>=1 else 1-minval
