@@ -1,0 +1,15 @@
+class Solution(object):
+    def sumOddLengthSubarrays(self, arr):
+        odsum, leng= 0, len(arr)
+
+        for i in range(1, leng):
+            arr[i]= arr[i-1]+arr[i]
+
+        for i in range(leng):
+            for j in range(i, leng, 2):
+                if i==0:
+                    odsum +=arr[j]
+                else:
+                    odsum += arr[j]-arr[i-1]
+        
+        return odsum
