@@ -1,0 +1,12 @@
+class Solution:
+    def removeDuplicates(self, s: str, k: int) -> str:
+        stack=[]
+
+        for ch in s:
+            if len(stack) >= k-1 and stack[-k+1:]== [ch]*(k-1):
+                del stack[-k+1:]
+                    
+            else:     
+                stack.append(ch)
+        
+        return "".join(stack)
