@@ -1,0 +1,13 @@
+class Solution:
+    def sortArrayByParityII(self, nums: List[int]) -> List[int]:
+        ev, od= 0, 1
+
+        while ev< len(nums) and od< len(nums):
+            if nums[ev]%2 !=0: #if nums[ev] is odd
+                #then find coresponding nums[od] even as below
+                while nums[od]%2 !=0:
+                    od +=2
+                nums[ev], nums[od]= nums[od], nums[ev]
+
+            ev +=2
+        return nums
