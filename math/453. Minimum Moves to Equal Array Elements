@@ -1,0 +1,7 @@
+class Solution(object):
+    def minMoves(self, nums):
+        nums.sort()
+        mov=0
+        for i in range(len(nums)):
+            mov += nums[i]-nums[0]
+        return mov
