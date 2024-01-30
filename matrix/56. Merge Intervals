@@ -1,0 +1,14 @@
+class Solution:
+    def merge(self, inter: List[List[int]]) -> List[List[int]]:
+        inter.sort(key= lambda row: row[0])
+        
+        output= [ inter[0] ]
+
+        for next_s, next_e in inter[1:]:
+            if output[-1][1] >= next_s:
+                output[-1][1]= max(next_e, output[-1][1])
+            
+            else:
+                output.append([next_s, next_e])
+        
+        return output
