@@ -1,26 +1,36 @@
-class Solution:
-    def bestClosingTime(self, customers: str) -> int:
-        arr=[]
-        penality = float("inf")
-        index = -1
-        for letter in customers:
-            if letter == "Y":
-                arr.append(1)
+class Solution(object):
+    def bestClosingTime(self, customers):
+        cleng= len(customers)
+        pleng= cleng +1
+        pref, postf= [0]*pleng, [0]*pleng
+
+    #it counts the "N" before closing position (when shop is open)
+        for i in range(1, pleng): # i is closing postion
+            if customers[i-1]=="N":
+                pref[i] += pref[i-1] +1
             else:
-                arr.append(0)
-        arr = list(accumulate(arr))
-        for i in range(len(arr)):
-            if i == 0:
-                p = arr[-1]
-            if i > 0:
-                before = i - arr[i-1]
-                after = arr[-1] - arr[i-1]
-                p = before+after
-            if p < penality:
-                penality = p
-                index = i
-        last_pen = len(arr) - arr[-1]
-        if last_pen < penality:
-            penality = last_pen
-            index = len(arr)
-        return index 
+                pref[i] =pref[i-1]
+        
+        for i in range(pleng-2, -1, -1):
+            if customers[i]=="Y":
+                postf[i] +=postf[i+1] +1
+            else:
+                postf[i] = postf[i+1]
+        
+        min_pen, ind = float("inf"), 0
+        for i in range(pleng):
+            cur_pen= pref[i] + postf[i]
+            if cur_pen < min_pen:
+                min_pen = cur_pen
+                ind= i
+        return ind
+
+
+            
+
+            
+
+        
+
+        
+        
