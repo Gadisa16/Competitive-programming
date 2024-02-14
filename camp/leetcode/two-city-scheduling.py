@@ -1,9 +1,9 @@
 class Solution:
     def twoCitySchedCost(self, costs: List[List[int]]) -> int:
         for row in costs:
-            row.append(row[1]- row[0])
+            row.append(row[0]- row[1])
 
-        sortAA= sorted(costs, key= lambda row: row[2], reverse= True)
+        sortAA= sorted(costs, key= lambda row: row[2])
 
         minCost, leng= 0, len(costs)
         for i, row in enumerate(sortAA):
