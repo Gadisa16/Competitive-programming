@@ -8,7 +8,6 @@ class Solution:
     def removeElements(self, head: Optional[ListNode], val: int) -> Optional[ListNode]:
         dummy= ListNode(0)
         dummy.next= head
-        prev, cur = dummy, head
 
         def recur(prev, cur):
             if cur:
@@ -19,5 +18,5 @@ class Solution:
                 else:
                     recur(prev.next, cur.next)
 
-        recur(prev, head)
-        return dummy.next  
+        recur(dummy, head)
+        return dummy.next 
