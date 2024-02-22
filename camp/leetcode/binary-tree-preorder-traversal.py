@@ -10,9 +10,7 @@ class Solution:
         def pre(root):
             if root:
                 ans.append(root.val)
-            if root and root.left:
                 pre(root.left)
-            if root and root.right:
                 pre(root.right)
         
         pre(root)
