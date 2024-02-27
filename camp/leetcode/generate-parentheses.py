@@ -1,17 +1,25 @@
-class Solution(object):
-    def generateParenthesis(self, n):
+class Solution:
+    def generateParenthesis(self, n: int) -> List[str]:
         result = []
-        def recursion(lc, rc, par):
+        
+        def back_track(opening_count, closing_count, curr):
             
-            if lc == rc == n:
-                result.append(par)
-                return
-            
-            if lc < n:
-                recursion(lc + 1, rc, par+'(')
+            if opening_count == closing_count == n:
+                result.append(''.join(curr))
                 
-            if lc > rc:
-                recursion(lc, rc + 1, par+')')      
-            
-        recursion(0, 0, '')
+            if opening_count < n:                
+                curr.append('(')
+                back_track(opening_count + 1, closing_count, curr)
+                curr.pop()
+                
+            if closing_count < opening_count:
+                curr.append(')')
+                back_track(opening_count, closing_count + 1, curr)
+                curr.pop()
+                
+        back_track(0, 0, [])   
+        
         return result
+        
+                            
+                
