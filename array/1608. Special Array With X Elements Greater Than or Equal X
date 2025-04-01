@@ -1,0 +1,10 @@
+class Solution:
+    def specialArray(self, nums: List[int]) -> int:
+        nums.sort()
+        leng = len(nums)
+
+        for i in range(leng):
+            large_n, prev_n = leng-i, nums[i-1] if i>1 else -1
+            if nums[i] >= large_n > prev_n:
+                return large_n
+        return -1
