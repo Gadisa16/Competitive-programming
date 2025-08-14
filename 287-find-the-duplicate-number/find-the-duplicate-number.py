@@ -1,15 +1,17 @@
 class Solution:
     def findDuplicate(self, nums: List[int]) -> int:
-        i = 0
-        while i < len(nums):
-            val = nums[i]
-            if val != -1 and val != i+1:
-                if nums[val-1] == -1:
-                    return val
-                nums[i], nums[val-1] = nums[val-1], -1
-                
-                if nums[i] == -1:
-                    i +=1
-            else:
-                nums[i] = -1
-                i +=1
+        s, f = 0, 0 # slow and fast pointer
+        
+        while True:
+            s = nums[s]
+            f = nums[nums[f]]
+
+            if s == f:
+                break
+        
+        s2 = 0 # resetted s
+        while True:
+            s2 = nums[s2]
+            s = nums[s]
+            if s2 == s:
+                return s
