@@ -3,22 +3,23 @@
  * @return {number}
  */
 var trap = function(height) {
-    let l = 0, r = height.length, max_height = 1, water = 0;
+    let l = 0, r = height.length-1;
+    let l_max = 0, r_max = 0, water = 0;
 
     while (l < r) {
         if (height[l] <= height[r]) {
-            if (max_height > height[l]) {
-                water = water + (max_height - height[l]);
+            if (height[l] < l_max) {
+                water = water + (l_max - height[l]);
             }
-            else {max_height = height[l];}
+            else {l_max = height[l];}
 
             l++;
         }
         else {
-            if (max_height > height[r]) {
-                water = water + (max_height - height[r]);
+            if (height[r] < r_max) {
+                water = water + (r_max - height[r]);
             }
-            else { max_height = height[r];}
+            else { r_max = height[r];}
 
             r--;
         }
