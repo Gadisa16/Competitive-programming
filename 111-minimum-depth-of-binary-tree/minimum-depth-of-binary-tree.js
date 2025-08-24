@@ -13,15 +13,25 @@
 var minDepth = function(root) {
     if (!root) return 0;
 
-    let q = [[root, 1]];
-
-    while (q.length) {
-        let [node, dep] = q.shift(); //destructuring array
-
-        if (!node.left && !node.right) return dep;
+    function dfs(node, dep) {
         
-        if (node.left) q.push([node.left, dep+1]);
+        let rdepth = Infinity, ldepth = Infinity;
 
-        if (node.right) q.push([node.right, dep+1]);
+        if (!node.left && !node.right){
+            return dep
+        }
+
+        if (node.left){
+            ldepth = dfs(node.left, dep+1);
+        }
+
+        if (node.right) {
+            rdepth = dfs(node.right, dep+1);
+        }
+
+        return Math.min(ldepth, rdepth);
+    
     }
+
+    return dfs(root, 1)
 };
